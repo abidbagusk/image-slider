@@ -15,12 +15,16 @@ carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
 // Add button listener
 nextBtn.addEventListener('click', function () {
+    // Fix bugs when user click button fast
+    if (counter >= carouselmages.length - 1) return;
     carouselSlide.style.transition = 'transform 0.4s ease-in-out';
     // add counter while click
     counter++;
     carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 });
 prevBtn.addEventListener('click', function () {
+    // Fix bugs when user click button fast
+    if (counter <= 0) return;
     carouselSlide.style.transition = 'transform 0.4s ease-in-out';
     // add counter while click
     counter--;
@@ -34,6 +38,12 @@ carouselSlide.addEventListener('transitionend', function () {
         carouselSlide.style.transition = 'none';
         // back to lastImage
         counter = carouselmages.length - 2;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+    if (carouselmages[counter].id === 'firstClone') {
+        carouselSlide.style.transition = 'none';
+        // back to firstImage
+        counter = carouselmages.length - counter;
         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
     }
 });

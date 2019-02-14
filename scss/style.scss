@@ -10,6 +10,7 @@ img {
     width: 60%;
     margin: 50px auto;
     border: 5px solid black;
+    overflow: hidden;
 
     .carousel-slide {
         display: flex;
