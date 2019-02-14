@@ -26,3 +26,14 @@ prevBtn.addEventListener('click', function () {
     counter--;
     carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 });
+
+// Loop back image
+carouselSlide.addEventListener('transitionend', function () {
+    // If image has 'lastClone' id
+    if (carouselmages[counter].id === 'lastClone') {
+        carouselSlide.style.transition = 'none';
+        // back to lastImage
+        counter = carouselmages.length - 2;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+});
